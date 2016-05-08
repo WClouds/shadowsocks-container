@@ -1,9 +1,22 @@
 # shadowsocks-container
 
 ##Quick Start
+
 ### server-side:
  * `cd config`,then change the passwd to what you want in shadowsocks.conf,default is "passwd".
- * run `docker pull colachen/shadowsocks-container;docker run -d -p 6718:6718 colachen/shadowsocks:latest 
+ * `docker pull colachen/shadowsocks-container`
+ * create an directory called config,then touch shadowsocks.conf in it.
+ * `mkdir config;cd config;touch shadowsocks`
+ * `{
+    "server":"0.0.0.0",
+    "server_port":6718,
+    "local_port":1080,
+    "password":"passwd",
+    "timeout":600,
+    "method":"aes-256-cfb",
+    "auth": true
+  }`
+ * `docker run -d -v $PWD/config : /app -p 6718:6718 colachen/shadowsocks:latest`
 
 ### client-side:
  * copy ./config/shadowsocks.conf to anywhere you like,remember to change the ip to the host's ip address,default is "0.0.0.0"
