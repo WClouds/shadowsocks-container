@@ -9,7 +9,4 @@ RUN apk add --update \
 
 WORKDIR /app
 
-#expose the port which is written in your shadowsocks config.
-EXPOSE 6718
-
 CMD ["ssserver", "-c", "shadowsocks.conf","-qq"]
